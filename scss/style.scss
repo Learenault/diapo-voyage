@@ -1,0 +1,149 @@
+@import './_variables';
+@import './_placeholders';
+@import './_mixins';
+
+body {
+    font-family: 'Montserrat';
+    font-size: 16px;
+    background: #f0f0f0;
+    width: 100%;
+  }
+
+section{
+  .images{
+    position: relative;
+    height: 400px;
+    margin: auto;
+    display: flex;
+
+  
+  .image{
+    position: absolute;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    transform: translate3d(0, 0, 0);
+    transition: transform 500ms ease, opacity 500ms ease;
+
+
+    &:not(.active){
+      opacity: 0;
+      transform: translate3d(30%, 0, 0);
+    }
+    &.leave{
+      opacity: 0;
+      transform: translate3d(-30%, 0, 0);
+    }
+  }
+}
+.titre{
+  position: relative;
+  height: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    h1 {
+      font-weight: 800;
+      font-size: 5em;
+      color: #9a1358;
+      position: absolute;
+      transform: translate3d(0, 0, 0);
+      transition: transform 500ms ease, opacity 500ms ease;
+
+      &:not(.active) {
+        opacity: 0;
+        transform: translate3d(30%, 0, 0);
+      }
+
+      &.leave {
+        opacity: 0;
+        transform: translate3d(-30%, 0, 0);
+      }
+    }
+  }
+} 
+ #bouton{
+   width: 30%;
+   margin: auto;
+   display: flex;
+  
+    #moins, #plus{
+      background-color: #394238;
+      color: seashell;
+      padding:10px 15px;
+      border-radius: 50%;
+      border: none;
+      margin: auto;
+      
+
+      &:hover{
+        background-color: rgb(85, 85, 85);
+      }
+      &:disabled{
+        background-color: rgb(181, 180, 180);
+      }
+    }
+  }
+  
+     ul{
+      display: flex;
+      width: 70%;
+      justify-content: space-around;
+      margin-top: 55px;
+      list-style: none;
+     
+      li{
+        position: relative;
+        flex-grow: 1;
+
+          .line {
+            &:before, &:after {
+              content: '';
+              position: absolute;
+              background: #8f3585;
+              height: 2px;
+              right: 32px;
+              left: 0;
+              opacity: .3;
+            }
+
+            &:after {
+              opacity: 1;
+              transform: scaleX(0);
+              transform-origin: left;
+              transition: transform 500ms ease-out;
+            }
+          }
+
+        &:after {
+          content: '';
+          right: 0;
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          opacity: 0.5;
+          background: #6a3472;
+          border-radius: 50%;
+          transform: translate(0, -50%);
+          transition: opacity 500ms ease;
+        }
+
+        &.active {
+          .line {
+            &:after {
+              transform: scaleX(1);
+            }
+        }
+
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+      }
+ 
+    
